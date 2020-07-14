@@ -16,7 +16,7 @@ namespace VRArmIK
 		public const float referencePlayerWidthWrist = 1.41f;
 		public float playerHeightHmd = 1.79f;
 		public float playerWidthWrist = 1.41f;
-		public float playerWidthShoulders = 2.4f;
+		public float playerWidthShoulders = 0.39f;
 
 		void OnEnable()
 		{
@@ -48,7 +48,7 @@ namespace VRArmIK
 
 		void loadPlayerWidthShoulders()
 		{
-			playerWidthShoulders = PlayerPrefs.GetFloat("VRArmIK_PlayerWidthShoulders", 0.31f);
+			playerWidthShoulders = PlayerPrefs.GetFloat("VRArmIK_PlayerWidthShoulders", 0.39f);
 		}
 
 		public void savePlayerWidthShoulders(float width)

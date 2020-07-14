@@ -351,6 +351,11 @@ namespace VRArmIK
 			setHandRotation(target.rotation);
 		}
 
+		public void handShift()
+		{
+
+		}
+
 		Vector3 removeShoulderRightRotation(Vector3 direction) => Quaternion.AngleAxis(-shoulderPoser.shoulderRightRotation, shoulder.transform.right) * direction;
 
 		Vector3 armDirection => left ? Vector3.left : Vector3.right;
