@@ -48,7 +48,7 @@ public class Logger : MonoBehaviour
 {
 
     //private StreamWriter m_eventLogger;
-    private StreamWriter m_telemetryLogger;
+    private StreamWriter m_telemetryLoggerCircle;
     private StreamWriter m_telemetryLoggerCursor;
 
 
@@ -69,7 +69,7 @@ public class Logger : MonoBehaviour
         // create writers
         string timeStamp = System.DateTime.Now.ToString("yyyymmdd_hhmmss");
         //m_eventLogger = new StreamWriter(Application.persistentDataPath + "/Logs/" + timeStamp + "_event.log");
-        m_telemetryLogger = new StreamWriter(Application.persistentDataPath + "/Logs/" + timeStamp + "_telemetry.log");
+        m_telemetryLoggerCircle = new StreamWriter(Application.persistentDataPath + "/Logs/" + timeStamp + "_telemetryCircle.log");
         m_telemetryLoggerCursor = new StreamWriter(Application.persistentDataPath + "/Logs/" + timeStamp + "_telemetryCursor.log"); 
 
     }
@@ -101,8 +101,8 @@ public class Logger : MonoBehaviour
         Vector3 cursorRot = cursor.eulerAngles;
         string cursorRotString = cursorRot.ToString();
 
-        m_telemetryLogger.WriteLine(unixTime + "," + timeSinceStart + "," + timeStamp + "," + hmdPosString + "," + hmdRotString);
-        m_telemetryLogger.Flush();
+        m_telemetryLoggerCircle.WriteLine(unixTime + "," + timeSinceStart + "," + timeStamp + "," + hmdPosString + "," + hmdRotString);
+        m_telemetryLoggerCircle.Flush();
         m_telemetryLoggerCursor.WriteLine(unixTime + "," + timeSinceStart + "," + timeStamp + "," + cursorPosString + "," + cursorRotString);
         m_telemetryLoggerCursor.Flush();
     }

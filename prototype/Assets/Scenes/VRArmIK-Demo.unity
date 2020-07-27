@@ -1512,7 +1512,7 @@ GameObject:
   - component: {fileID: 601058633}
   - component: {fileID: 601058632}
   m_Layer: 0
-  m_Name: LoggerCircle
+  m_Name: Logger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3493,7 +3493,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   raycastOrigin: {fileID: 1565788957}
   direction: {fileID: 1565788957}
-  maxDistance: 0.3
+  maxDistance: 0.03
   m_layerMask: 2048
   n_layerMask: 1024
   laserLineRenderer: {fileID: 1350018073}

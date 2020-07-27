@@ -6,7 +6,7 @@ public class HitTriggers : MonoBehaviour
 {
     public Transform raycastOrigin;
     public Transform direction;
-    public float maxDistance = 0.3f;
+    public float maxDistance = 0.03f;
     public int m_layerMask = 1 << 11;
     public int n_layerMask = 1 << 10;
 
@@ -36,7 +36,7 @@ public class HitTriggers : MonoBehaviour
 
        if(Physics.Raycast(raycastOrigin.position, direction.TransformDirection(Vector3.forward), maxDistance, m_layerMask) == true && Physics.Raycast(raycastOrigin.position, direction.TransformDirection(Vector3.forward), maxDistance, n_layerMask) == true)
         {
-            OVRInput.SetControllerVibration(1f, 1f, OVRInput.Controller.RTouch);
+            OVRInput.SetControllerVibration(0.5f, 0.5f, OVRInput.Controller.RTouch);
             Debug.Log("1");
         }
         // else{
@@ -46,7 +46,7 @@ public class HitTriggers : MonoBehaviour
 
         if(Physics.Raycast(raycastOrigin.position, direction.TransformDirection(Vector3.forward), maxDistance, n_layerMask) == true && Physics.Raycast(raycastOrigin.position, direction.TransformDirection(Vector3.forward), maxDistance, m_layerMask) == false)
         {
-            OVRInput.SetControllerVibration(0.2f, 0.2f, OVRInput.Controller.RTouch);
+            OVRInput.SetControllerVibration(0f, 0f, OVRInput.Controller.RTouch);
             Debug.Log("2");
         }
         // else{
