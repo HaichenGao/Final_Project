@@ -55,6 +55,11 @@ public class Logger : MonoBehaviour
     [Tooltip("The object representing the user's headset")]
     public Transform hmd;
     public Transform cursor;
+
+    public float speedHmd = 0f;
+    public float speedCursor = 0f;
+    Vector3 lastPositionHmd = Vector3.zero;
+    Vector3 lastPositionCursor = Vector3.zero;
     
     [Tooltip("The interval for the telemetry log in seconds.")]
     public float logIntervals = 0.5f; // 0.5 is default
@@ -77,10 +82,15 @@ public class Logger : MonoBehaviour
     // Update is called once per frame
     void Update() {
         // log telemetry in regular intervals
-        if (m_lastLogTime + logIntervals < Time.time) {
-            LogTelemetry();
-            m_lastLogTime = Time.time;
-        }
+
+        // if (m_lastLogTime + logIntervals < Time.time) {
+        //     LogTelemetry();
+        //     m_lastLogTime = Time.time;
+        // }
+
+
+        LogTelemetry();
+
     }
 
 
@@ -101,9 +111,17 @@ public class Logger : MonoBehaviour
         Vector3 cursorRot = cursor.eulerAngles;
         string cursorRotString = cursorRot.ToString();
 
-        m_telemetryLoggerCircle.WriteLine(unixTime + "," + timeSinceStart + "," + timeStamp + "," + hmdPosString + "," + hmdRotString);
+        speedHmd = (hmdPos - lastPositionHmd).magnitude/Time.deltaTime;
+        string speedHmdString = speedHmd.ToString();
+        lastPositionHmd = hmdPos;
+
+        speedCursor = (cursorPos - lastPositionCursor).magnitude/Time.deltaTime;
+        string speedCursorString = speedCursor.ToString();
+        lastPositionCursor = cursorPos;
+
+        m_telemetryLoggerCircle.WriteLine(unixTime + "," + timeSinceStart + "," + timeStamp + "," + hmdPosString + "," + hmdRotString + "," + speedHmdString);
         m_telemetryLoggerCircle.Flush();
-        m_telemetryLoggerCursor.WriteLine(unixTime + "," + timeSinceStart + "," + timeStamp + "," + cursorPosString + "," + cursorRotString);
+        m_telemetryLoggerCursor.WriteLine(unixTime + "," + timeSinceStart + "," + timeStamp + "," + cursorPosString + "," + cursorRotString + "," + speedCursorString);
         m_telemetryLoggerCursor.Flush();
     }
 

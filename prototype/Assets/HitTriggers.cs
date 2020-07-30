@@ -20,9 +20,12 @@ public class HitTriggers : MonoBehaviour
     void Start()
     {
         
-         Vector3[] initLaserPositions = new Vector3[ 2 ] { Vector3.zero, Vector3.zero };
-         laserLineRenderer.SetPositions( initLaserPositions );
-         laserLineRenderer.SetWidth( laserWidth, laserWidth );
+        Vector3[] initLaserPositions = new Vector3[ 2 ] { Vector3.zero, Vector3.zero };
+        laserLineRenderer.SetPositions( initLaserPositions );
+        laserLineRenderer.SetWidth( laserWidth, laserWidth );
+
+        // GameObject loggers = GameObject.Find("Loggers");
+        // Logger loggerScript = loggers.GetComponent<Logger>();
     }
 
     // Update is called once per frame
@@ -32,12 +35,15 @@ public class HitTriggers : MonoBehaviour
         // lineRenderer.SetPositions(1, raycastHit.point);
         // lineRenderer.enabled = true;
         ShootLaserFromTargetPosition(raycastOrigin.position, direction.TransformDirection(Vector3.forward), maxDistance);
+        
+        float vibration = GameObject.Find("Loggers").GetComponent<Logger>().speedCursor/0.25f;
+
 
 
        if(Physics.Raycast(raycastOrigin.position, direction.TransformDirection(Vector3.forward), maxDistance, m_layerMask) == true && Physics.Raycast(raycastOrigin.position, direction.TransformDirection(Vector3.forward), maxDistance, n_layerMask) == true)
         {
-            OVRInput.SetControllerVibration(0.5f, 0.5f, OVRInput.Controller.RTouch);
-            Debug.Log("1");
+            OVRInput.SetControllerVibration(vibration, vibration, OVRInput.Controller.RTouch);
+            //Debug.Log("1");
         }
         // else{
         //     OVRInput.SetControllerVibration(0f, 0f, OVRInput.Controller.RTouch);
@@ -47,7 +53,7 @@ public class HitTriggers : MonoBehaviour
         if(Physics.Raycast(raycastOrigin.position, direction.TransformDirection(Vector3.forward), maxDistance, n_layerMask) == true && Physics.Raycast(raycastOrigin.position, direction.TransformDirection(Vector3.forward), maxDistance, m_layerMask) == false)
         {
             OVRInput.SetControllerVibration(0f, 0f, OVRInput.Controller.RTouch);
-            Debug.Log("2");
+            //Debug.Log("2");
         }
         // else{
         //     OVRInput.SetControllerVibration(0f, 0f, OVRInput.Controller.RTouch);
@@ -56,7 +62,7 @@ public class HitTriggers : MonoBehaviour
         if(Physics.Raycast(raycastOrigin.position, direction.TransformDirection(Vector3.forward), maxDistance, n_layerMask) == false && Physics.Raycast(raycastOrigin.position, direction.TransformDirection(Vector3.forward), maxDistance, m_layerMask) == false)
         {
             OVRInput.SetControllerVibration(0f, 0f, OVRInput.Controller.RTouch);
-            Debug.Log("0");
+            //Debug.Log("0");
         }
 
     }
