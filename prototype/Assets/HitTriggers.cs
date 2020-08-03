@@ -14,6 +14,8 @@ public class HitTriggers : MonoBehaviour
 
     public LineRenderer laserLineRenderer;
     public float laserWidth = 0.1f;
+
+    public bool hit = false;
     
 
     // Start is called before the first frame update
@@ -38,7 +40,7 @@ public class HitTriggers : MonoBehaviour
         
         float vibration = GameObject.Find("Loggers").GetComponent<Logger>().speedCursor/0.25f;
 
-
+        hit = Physics.Raycast(raycastOrigin.position, direction.TransformDirection(Vector3.forward), maxDistance, m_layerMask);
 
        if(Physics.Raycast(raycastOrigin.position, direction.TransformDirection(Vector3.forward), maxDistance, m_layerMask) == true && Physics.Raycast(raycastOrigin.position, direction.TransformDirection(Vector3.forward), maxDistance, n_layerMask) == true)
         {

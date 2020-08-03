@@ -4,7 +4,22 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Menu 1.unity
+    guid: 1f700c12df281ac42964db7e7fdb6879
+  - enabled: 1
+    path: Assets/Scenes/None_Bottom.unity
+    guid: 4b5aa29e5e56e8840b86fd44f82e676c
+  - enabled: 1
+    path: Assets/Scenes/None_Top.unity
+    guid: e9b44041f6a0607438d790f49b89f250
+  - enabled: 1
+    path: Assets/Scenes/Linear_Top.unity
+    guid: 3c276ec89ca60fb409489004164f9121
+  - enabled: 1
+    path: Assets/Scenes/Proportional_Top.unity
+    guid: 208065b4d00b03a4094155ae0163994d
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 0d3f5c6cabf03814a939ef991e4ec6c5,
       type: 2}

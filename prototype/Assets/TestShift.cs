@@ -35,43 +35,47 @@ public class TestShift : MonoBehaviour
     {
 
         // Either a time based constant shift that is applied until the max angle is reached, or shift by pressing a button
-        if(ConstantShift)
+        if(GameObject.Find("Canvas").GetComponent<CountdownTimer>().trackingStart)
         {
-            // Check whether we are there yet and, if not shift
-            if(m_currentAngle < maxAngle)
+            if(ConstantShift)
             {
-                // calculate how much we would move
-                float speed = Time.deltaTime * angularSpeed;
-
-                // Make sure that we don't overshoot
-                float diff = maxAngle - m_currentAngle;
-
-                if(diff > 0)
+                // Check whether we are there yet and, if not shift
+                if(m_currentAngle < maxAngle)
                 {
-                    ApplyShift(speed);
-                    //ObjectToShift.position = new Vector3(RealHandLeft.position.x, ObjectToShift.position.y, ObjectToShift.position.z);
-                    // Vector3 pos = RealHandLeft.position;
-                    // ObjectToShift.position.x = pos.x;
-                    m_currentAngle += speed;
+                    // calculate how much we would move
+                    float speed = Time.deltaTime * angularSpeed;
+
+                    // Make sure that we don't overshoot
+                    float diff = maxAngle - m_currentAngle;
+
+                    if(diff > 0)
+                    {
+                        ApplyShift(speed);
+                        //ObjectToShift.position = new Vector3(RealHandLeft.position.x, ObjectToShift.position.y, ObjectToShift.position.z);
+                        // Vector3 pos = RealHandLeft.position;
+                        // ObjectToShift.position.x = pos.x;
+                        m_currentAngle += speed;
+                    }
+                    else
+                    {
+                        ApplyShift(diff);
+                        //ObjectToShift.position = new Vector3(RealHandLeft.position.x, ObjectToShift.position.y, ObjectToShift.position.z);
+                        m_currentAngle = maxAngle;
+                    }                
                 }
-                else
-                {
-                    ApplyShift(diff);
-                    //ObjectToShift.position = new Vector3(RealHandLeft.position.x, ObjectToShift.position.y, ObjectToShift.position.z);
-                    m_currentAngle = maxAngle;
-                }                
+                //ObjectToShift.position = new Vector3(RealHandLeft.position.x, ObjectToShift.position.y, ObjectToShift.position.z);
             }
-            //ObjectToShift.position = new Vector3(RealHandLeft.position.x, ObjectToShift.position.y, ObjectToShift.position.z);
-        }
-        else
-        {
-            bool buttonXPressed = OVRInput.GetDown(OVRInput.Button.Three, OVRInput.Controller.Touch);
-
-            if (buttonXPressed)
+            else
             {
-                ApplyShift(maxAngle);
-            }
+                bool buttonXPressed = OVRInput.GetDown(OVRInput.Button.Three, OVRInput.Controller.Touch);
+
+                if (buttonXPressed)
+                {
+                    ApplyShift(maxAngle);
+                }
+            }    
         }
+        
         
     }
 
