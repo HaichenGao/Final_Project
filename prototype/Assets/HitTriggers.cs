@@ -45,7 +45,7 @@ public class HitTriggers : MonoBehaviour
        if(Physics.Raycast(raycastOrigin.position, direction.TransformDirection(Vector3.forward), maxDistance, m_layerMask) == true && Physics.Raycast(raycastOrigin.position, direction.TransformDirection(Vector3.forward), maxDistance, n_layerMask) == true)
         {
             OVRInput.SetControllerVibration(vibration, vibration, OVRInput.Controller.RTouch);
-            //Debug.Log("1");
+            Debug.Log("1");
         }
         // else{
         //     OVRInput.SetControllerVibration(0f, 0f, OVRInput.Controller.RTouch);

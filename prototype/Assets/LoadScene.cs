@@ -54,6 +54,16 @@ public class LoadScene : MonoBehaviour
         SceneManager.LoadScene(scenarios[2]);
     }
 
+    public void SceneLoaderForth()
+    {
+        SceneManager.LoadScene(scenarios[3]);
+    }
+
+    public void SceneLoaderFifth()
+    {
+        SceneManager.LoadScene(scenarios[4]);
+    }
+
     public void SceneLoader(int SceneIndex)
     {
         SceneManager.LoadScene(SceneIndex);

@@ -20,6 +20,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Proportional_Top.unity
     guid: 208065b4d00b03a4094155ae0163994d
+  - enabled: 1
+    path: Assets/Scenes/Quasi_Random.unity
+    guid: 7e87fd6d051cee24a9aa209b37a92b3f
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 0d3f5c6cabf03814a939ef991e4ec6c5,
       type: 2}

@@ -34,20 +34,24 @@ public class NonlinearShift : MonoBehaviour
 
         //Avatar.transform.position = RealHandRight.transform.position;
         Vector3 direction = RealHandRight.transform.position - lastHandPosition;
+        float directionY = RealHandRight.transform.position.y - lastHandPosition.y;
         float d = Vector3.Dot(direction, Vector3.up);
-        speed = direction.magnitude/Time.deltaTime;
+        speed = Mathf.Abs(directionY)/Time.deltaTime;
+        //speed = directionY.magnitude/Time.deltaTime;
         angularSpeed = Time.deltaTime * speed/parameter;
 
         if(GameObject.Find("Canvas").GetComponent<CountdownTimer>().trackingStart)
         {
             if(m_currentAngle < maxAngle)
             {
-                if(d > 0)
-                {
-                    ApplyShift(angularSpeed);
-                    m_currentAngle += angularSpeed;
+                // if(d > 0)
+                // {
+                //     ApplyShift(angularSpeed);
+                //     m_currentAngle += angularSpeed;
 
-                }
+                // }
+                ApplyShift(angularSpeed);
+                m_currentAngle += angularSpeed;
             }
         }
 
