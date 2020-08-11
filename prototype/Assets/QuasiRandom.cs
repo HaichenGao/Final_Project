@@ -15,6 +15,13 @@ public class QuasiRandom : MonoBehaviour
 
     float currentTime = 0.0f;
 
+    float speed = 0f;
+    public Transform changeAngleAvatar;
+    float speedAngular;
+    public float secondParameter = 0.52f;
+    Vector3 lastHandPosition = Vector3.zero;
+    public float timeCount = 0.01f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -49,11 +56,35 @@ public class QuasiRandom : MonoBehaviour
         //     ObjectShift.Rotate(Vector3.forward*-90);
         // }
 
+        Vector3 direction = HandRight.transform.position - lastHandPosition;
+        float directionY = HandRight.transform.position.y - lastHandPosition.y;
+        float d = Vector3.Dot(direction, Vector3.up);
+        speed = Mathf.Abs(directionY)/Time.deltaTime;
+        //speed = directionY.magnitude/Time.deltaTime;
+        //angularSpeed = Time.deltaTime * speed/parameter;
+        speedAngular = Time.deltaTime * speed/secondParameter;
 
+        if(GameObject.Find("Canvas").GetComponent<CountdownTimer>().trackingStop && d < 0)
+        {
+            //Debug.Log("123321");
+            if(Vector3.Distance(ShiftObject.position, HandRight.transform.position) > 0f)
+            {
+
+                changeAngleAvatar.rotation = HandRight.transform.rotation;
+                changeAngleAvatar.Rotate(Vector3.forward*-90);
+                //Debug.Log("oooooooooooh");
+                ShiftObject.position = Vector3.MoveTowards(ShiftObject.position, HandRight.transform.position, speedAngular);
+                ShiftObject.rotation = Quaternion.Slerp(ShiftObject.rotation, changeAngleAvatar.rotation, timeCount);
+                //timeCount = timeCount + Time.deltaTime;
+                //ObjectToShift.rotation = RealHandLeft.rotation;
+                //ObjectToShift.Rotate(Vector3.forward*-90);
+            }
+
+        }
 
         // Debug.Log(speed); 
 
-        // lastHandPosition = RealHandRight.transform.position;
+        lastHandPosition = HandRight.transform.position;
         
     }
 

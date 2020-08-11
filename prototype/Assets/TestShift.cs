@@ -24,6 +24,13 @@ public class TestShift : MonoBehaviour
 
     private float m_currentAngle = 0.0f;
 
+    float speed = 0f;
+    Vector3 lastHandPosition = Vector3.zero;
+    public float parameter;
+    public float speedAngular;
+    public float timeCount = 0.0f;
+    public Transform change;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +40,11 @@ public class TestShift : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Vector3 direction = RealHandLeft.position - lastHandPosition;
+        float directionY = RealHandLeft.position.y - lastHandPosition.y;
+        float d = Vector3.Dot(direction,Vector3.up);
+        speed = Mathf.Abs(directionY)/Time.deltaTime;
+        speedAngular = Time.deltaTime * speed/parameter;
 
         // Either a time based constant shift that is applied until the max angle is reached, or shift by pressing a button
         if(GameObject.Find("Canvas").GetComponent<CountdownTimer>().trackingStart)
@@ -65,16 +77,36 @@ public class TestShift : MonoBehaviour
                 }
                 //ObjectToShift.position = new Vector3(RealHandLeft.position.x, ObjectToShift.position.y, ObjectToShift.position.z);
             }
-            else
-            {
-                bool buttonXPressed = OVRInput.GetDown(OVRInput.Button.Three, OVRInput.Controller.Touch);
+            // else
+            // {
+            //     bool buttonXPressed = OVRInput.GetDown(OVRInput.Button.Three, OVRInput.Controller.Touch);
 
-                if (buttonXPressed)
-                {
-                    ApplyShift(maxAngle);
-                }
-            }    
+            //     if (buttonXPressed)
+            //     {
+            //         ApplyShift(maxAngle);
+            //     }
+            // }    
         }
+
+        if(GameObject.Find("Canvas").GetComponent<CountdownTimer>().trackingStop && d < 0)
+        {
+            Debug.Log("123321");
+            if(Vector3.Distance(ObjectToShift.position, RealHandLeft.position) > 0f)
+            {
+
+                change.rotation = RealHandLeft.rotation;
+                change.Rotate(Vector3.forward*-90);
+                Debug.Log("oooooooooooh");
+                ObjectToShift.position = Vector3.MoveTowards(ObjectToShift.position, RealHandLeft.position, speedAngular);
+                ObjectToShift.rotation = Quaternion.Slerp(ObjectToShift.rotation, change.rotation, timeCount);
+                //timeCount = timeCount + Time.deltaTime;
+                //ObjectToShift.rotation = RealHandLeft.rotation;
+                //ObjectToShift.Rotate(Vector3.forward*-90);
+            }
+
+        }
+
+        lastHandPosition = RealHandLeft.position;
         
         
     }
@@ -86,8 +118,11 @@ public class TestShift : MonoBehaviour
 
         // rotate the object around that axis projected from one shoulder
         ObjectToShift.RotateAround(RightShoulder.position, axis, angle);
-        // ObjectToShift.position = new Vector3(RealHandLeft.position.x, ObjectToShift.position.y, ObjectToShift.position.z);
+        // ObjectToShift.position.x = RealHandLeft.position.x;
         // ObjectToShift.rotation = RealHandLeft.rotation;
         // ObjectToShift.Rotate(Vector3.forward*90);
+        // ObjectToShift.position = new Vector3(RealHandLeft.position.x, ObjectToShift.position.y, ObjectToShift.position.z);
+        // ObjectToShift.rotation = RealHandLeft.rotation;
+        // ObjectToShift.Rotate(Vector3.forward*-90);
     }
 }

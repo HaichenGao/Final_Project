@@ -17,9 +17,8 @@ public class StartStop : MonoBehaviour
         
     }
 
-    public void EffectsOn(bool value)
+    public void activateObject(GameObject canvas)
     {
-        effectsOn = value; 
-        Debug.Log(effectsOn.ToString());
+        canvas.active = true;
     }
 }

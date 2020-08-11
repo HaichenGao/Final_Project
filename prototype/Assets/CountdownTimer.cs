@@ -8,10 +8,13 @@ public class CountdownTimer : MonoBehaviour
     float currentTime = 0f;
     float startingTime = 5f;
     float timeRemaining = 0f;
-    float taskTime = 121f;
+    public float taskTime = 121f;
+    // public float loadingTime = 20f;
     public Text countdownText;
     public Text TimeRemaining;
+    // public TextMeshProUGUI loadingText;
     public bool trackingStart;
+    public bool trackingStop;
 
 
     // Start is called before the first frame update
@@ -63,8 +66,14 @@ public class CountdownTimer : MonoBehaviour
             {
                 timeRemaining = 0;
                 trackingStart = false;
+                trackingStop = true;
             }
         }
+
+        // if()
+        // {
+
+        // }
 
         // if(GameObject.Find("HapticFeedback").GetComponent<HitTriggers>().hit == true)
         // {

@@ -18,7 +18,12 @@ public class NonlinearShift : MonoBehaviour
     private float m_currentAngle = 0.0f;
     public float maxAngle;
     float angularSpeed;
+    float speedAngular;
     public float parameter;
+    public float secondParameter = 0.52f;
+
+    public float timeCount = 0.01f;
+    public Transform changeAngle;
 
     // Start is called before the first frame update
     void Start()
@@ -39,6 +44,7 @@ public class NonlinearShift : MonoBehaviour
         speed = Mathf.Abs(directionY)/Time.deltaTime;
         //speed = directionY.magnitude/Time.deltaTime;
         angularSpeed = Time.deltaTime * speed/parameter;
+        speedAngular = Time.deltaTime * speed/secondParameter;
 
         if(GameObject.Find("Canvas").GetComponent<CountdownTimer>().trackingStart)
         {
@@ -56,16 +62,34 @@ public class NonlinearShift : MonoBehaviour
         }
 
 
-        if(OVRInput.GetDown(OVRInput.Button.Three, OVRInput.Controller.Touch))
+        // if(OVRInput.GetDown(OVRInput.Button.Three, OVRInput.Controller.Touch))
+        // {
+        //     ObjectShift.position = RealHandRight.transform.position;
+        //     ObjectShift.rotation = RealHandRight.transform.rotation;
+        //     ObjectShift.Rotate(Vector3.forward*-90);
+        // }
+
+        if(GameObject.Find("Canvas").GetComponent<CountdownTimer>().trackingStop && d < 0)
         {
-            ObjectShift.position = RealHandRight.transform.position;
-            ObjectShift.rotation = RealHandRight.transform.rotation;
-            ObjectShift.Rotate(Vector3.forward*-90);
+            //Debug.Log("123321");
+            if(Vector3.Distance(ObjectShift.position, RealHandRight.transform.position) > 0f)
+            {
+
+                changeAngle.rotation = RealHandRight.transform.rotation;
+                changeAngle.Rotate(Vector3.forward*-90);
+                //Debug.Log("oooooooooooh");
+                ObjectShift.position = Vector3.MoveTowards(ObjectShift.position, RealHandRight.transform.position, speedAngular);
+                ObjectShift.rotation = Quaternion.Slerp(ObjectShift.rotation, changeAngle.rotation, timeCount);
+                //timeCount = timeCount + Time.deltaTime;
+                //ObjectToShift.rotation = RealHandLeft.rotation;
+                //ObjectToShift.Rotate(Vector3.forward*-90);
+            }
+
         }
 
 
 
-        Debug.Log(speed); 
+        //Debug.Log(speed); 
 
         lastHandPosition = RealHandRight.transform.position;
         
