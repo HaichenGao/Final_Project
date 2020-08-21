@@ -193,6 +193,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 257a3b08c75396945a820165e204a5d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeRemaining: 0
   taskTime: 121
   countdownText: {fileID: 0}
   TimeRemaining: {fileID: 0}
@@ -692,6 +693,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 257a3b08c75396945a820165e204a5d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeRemaining: 0
   taskTime: 121
   countdownText: {fileID: 0}
   TimeRemaining: {fileID: 0}
@@ -2099,6 +2101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 257a3b08c75396945a820165e204a5d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeRemaining: 0
   taskTime: 121
   countdownText: {fileID: 0}
   TimeRemaining: {fileID: 0}
@@ -3090,6 +3093,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 257a3b08c75396945a820165e204a5d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeRemaining: 0
   taskTime: 121
   countdownText: {fileID: 0}
   TimeRemaining: {fileID: 0}
@@ -4022,7 +4026,7 @@ MonoBehaviour:
     a haptic feedback while tracking. In this way, it will remind you not to raise
     the index finger too far away. \r\n\r\nNow you can start the training session
     by extending your right index finger and putting it on the grey dot. The training
-    session will start after 5 seconds. \rDuring the task, you should keep your LEFT
+    session will start after 5 seconds. During the task, you should keep your LEFT
     hand hanging down vertically.\n\r\nWhen you feel confident about this pursuit
     tracking task, you can click \u201CNext\u201D button on the upper menu (press
     button \u201CA\u201D on your right controller when the cursor hits the \u201CNext\u201D
@@ -4092,15 +4096,15 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 1.5210539, y: 2.4674773, z: 1.3968275, w: 3.5963}
+  m_margin: {x: 1.5210539, y: 2.4674773, z: 1.3968275, w: 3.1853733}
   m_textInfo:
     textComponent: {fileID: 1094033360}
-    characterCount: 960
+    characterCount: 959
     spriteCount: 0
     spaceCount: 179
     wordCount: 174
     linkCount: 0
-    lineCount: 28
+    lineCount: 29
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -5081,7 +5085,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -0.0008, y: 0}
   m_SizeDelta: {x: 30, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1480121462
@@ -5103,9 +5107,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Welcome! \r\nIn this experiment, you will go through 5 pursuit tracking
-    tasks including a questionnaire after each trial. Before you jump into the experiment,
-    please keep standing and check the short training session down below in which
-    the pursuit tracking task was introduced.\r\n"
+    tasks including a questionnaire after each trial. \r\nBefore you jump into the
+    experiment, please take off your headset and finish the Basic Information section
+    in the questionnaire.\r\nThen, please keep standing and check the short training
+    session down below in which the pursuit tracking task was introduced.\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -5133,8 +5138,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 1.6
-  m_fontSizeBase: 1.6
+  m_fontSize: 1.5
+  m_fontSizeBase: 1.5
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -5150,7 +5155,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 198
+  m_firstOverflowCharacterIndex: -1
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -5171,15 +5176,15 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 1.0841235, y: 3.2329679, z: 1.121299, w: 15.155295}
+  m_margin: {x: 1.0841235, y: 3.2329679, z: 0.5442739, w: 7.4242096}
   m_textInfo:
     textComponent: {fileID: 1480121462}
-    characterCount: 278
+    characterCount: 379
     spriteCount: 0
-    spaceCount: 44
-    wordCount: 43
+    spaceCount: 60
+    wordCount: 58
     linkCount: 0
-    lineCount: 9
+    lineCount: 11
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -6034,6 +6039,7 @@ MonoBehaviour:
   secondParameter: 0.52
   timeCount: 0.01
   changeAngle: {fileID: 0}
+  shiftState: 
 --- !u!1 &1803726342
 GameObject:
   m_ObjectHideFlags: 0
