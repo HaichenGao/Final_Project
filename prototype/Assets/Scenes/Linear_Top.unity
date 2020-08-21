@@ -2498,7 +2498,7 @@ MonoBehaviour:
   RealHandLeft: {fileID: 795215446}
   leftAvatarPosition: {fileID: 0}
   maxAngle: 60
-  angularSpeed: 1.3
+  angularSpeed: 1.33
   ConstantShift: 1
   parameter: 0.52
   speedAngular: 0

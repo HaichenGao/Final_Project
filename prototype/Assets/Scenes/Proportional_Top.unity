@@ -2780,10 +2780,11 @@ MonoBehaviour:
   ObjectShift: {fileID: 1822221030}
   RealHandRight: {fileID: 1125068299107782}
   maxAngle: 60
-  parameter: 0.05
+  parameter: 0.04465
   secondParameter: 0.52
   timeCount: 0.01
   changeAngle: {fileID: 1112146110}
+  shiftStatement: 
 --- !u!4 &1822221030 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4580194091363106, guid: 6fae51a9f4170334e8639e8dbfc0a54b,

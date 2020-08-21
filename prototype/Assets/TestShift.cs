@@ -88,7 +88,7 @@ public class TestShift : MonoBehaviour
             // }    
         }
 
-        if(GameObject.Find("Canvas").GetComponent<CountdownTimer>().trackingStop && d < 0)
+        if(GameObject.Find("Canvas").GetComponent<CountdownTimer>().trackingStop)
         {
             Debug.Log("123321");
             if(Vector3.Distance(ObjectToShift.position, RealHandLeft.position) > 0f)

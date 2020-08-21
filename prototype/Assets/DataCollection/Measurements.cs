@@ -18,13 +18,21 @@ public struct TelemetryRecord
     // Payload
     public Vector3 hmdPosition;
     public Vector3 hmdRotation;
-    public float speedHmd;
 
-    public Vector3 cursorPos;
-    public Vector3 cursorRot;
+    public Vector3 circlePosition;
+    public Vector3 circleRotation;
+    public float speedCircle;
+
+    public Vector3 cursorPosition;
+    public Vector3 cursorRotation;
     public float speedCursor;
 
     public string sceneName;
+
+    public float fingerTargetDistance;
+    public float fingerCentreDistance;
+
+    public string state;
 
     
 

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 public enum LoggingMode { local, online };
 
 // Functionality:
@@ -66,18 +67,24 @@ public class Logger : MonoBehaviour
 
     [Tooltip("The object representing the user's headset")]
     public Transform hmd;
+    public Transform circle;
     public Transform cursor;
 
-    public float speedHmd = 0f;
+    public float speedCircle = 0f;
     public float speedCursor = 0f;
-    Vector3 lastPositionHmd = Vector3.zero;
-    Vector3 lastPositionCursor = Vector3.zero;
+    public Vector3 lastPositionCircle = Vector3.zero;
+    public Vector3 lastPositionCursor = Vector3.zero;
 
-    Vector3 hmdPos;
-    Vector3 hmdRot;
+    public Vector3 hmdPos;
+    public Vector3 hmdRot;
 
-    Vector3 cursorPos;
-    Vector3 cursorRot;
+    public Vector3 circlePos;
+    public Vector3 circleRot;
+
+    public Vector3 cursorPos;
+    public Vector3 cursorRot;
+
+
 
 
     [Tooltip("The interval for the telemetry log in seconds.")]
@@ -130,18 +137,21 @@ public class Logger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        hmd = GameObject.Find("/Canvas/Circle").transform;
+        hmd = GameObject.Find("CenterEyeAnchor").transform;
+        circle = GameObject.Find("/Canvas/Circle").transform;
         cursor = GameObject.Find("/UIHelpers/Sphere").transform;
 
-        Vector3 hmdPos = hmd.position;
-        Vector3 hmdRot = hmd.eulerAngles;
+        hmdPos = hmd.position;
 
-        Vector3 cursorPos = cursor.position;
-        Vector3 cursorRot = cursor.eulerAngles;
+        circlePos = circle.position;
+        circleRot = circle.eulerAngles;
 
-        speedHmd = (hmdPos - lastPositionHmd).magnitude/Time.deltaTime;
-        string speedHmdString = speedHmd.ToString();
-        lastPositionHmd = hmdPos;
+        cursorPos = cursor.position;
+        cursorRot = cursor.eulerAngles;
+
+        speedCircle = (circlePos - lastPositionCircle).magnitude/Time.deltaTime;
+        string speedCircleString = speedCircle.ToString();
+        lastPositionCircle = circlePos;
 
         speedCursor = (cursorPos - lastPositionCursor).magnitude/Time.deltaTime;
         string speedCursorString = speedCursor.ToString();
@@ -262,6 +272,10 @@ public class Logger : MonoBehaviour
 
 
         string sceneName = SceneManager.GetActiveScene().name;
+        string state = GameObject.Find("RightHandShift").GetComponent<NonlinearShift>().shiftState;
+
+        float fingerTargetDistance = Vector3.Distance(circlePos, cursorPos);
+        float fingerCentreDistance = Vector3.Distance(cursorPos, GameObject.Find("Canvas").transform.position);
 
         TelemetryRecord tRecord = new TelemetryRecord();
         tRecord.unixTime = unixTime;
@@ -269,14 +283,22 @@ public class Logger : MonoBehaviour
         tRecord.timeStamp = timeStamp;
 
         tRecord.hmdPosition = hmdPos;
-        tRecord.hmdRotation = hmdRot;
-        tRecord.speedHmd = speedHmd;
 
-        tRecord.cursorPos = cursorPos;
-        tRecord.cursorRot = cursorRot;
+        tRecord.circlePosition = circlePos;
+        tRecord.circleRotation = circleRot;
+        tRecord.speedCircle = speedCircle;
+
+        tRecord.cursorPosition = cursorPos;
+        tRecord.cursorRotation = cursorRot;
         tRecord.speedCursor = speedCursor;
 
-        tRecord.sceneName = sceneName;
+        tRecord.fingerTargetDistance = fingerTargetDistance;
+        tRecord.fingerCentreDistance = fingerCentreDistance;
+
+        tRecord.state = state;
+
+        tRecord.sceneName = GameObject.Find("Condition").GetComponent<TextMeshProUGUI>().text;
+        //Debug.Log(tRecord.sceneName);
 
 
         m_experiment.telemetryRecords.Add(tRecord);

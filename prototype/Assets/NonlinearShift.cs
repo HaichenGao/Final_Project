@@ -25,6 +25,8 @@ public class NonlinearShift : MonoBehaviour
     public float timeCount = 0.01f;
     public Transform changeAngle;
 
+    public string shiftState;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -58,7 +60,16 @@ public class NonlinearShift : MonoBehaviour
                 // }
                 ApplyShift(angularSpeed);
                 m_currentAngle += angularSpeed;
+                shiftState = "shifting";
+                //Debug.Log(GameObject.Find("Canvas").GetComponent<CountdownTimer>().timeRemaining.ToString());
+            }else
+            {
+                shiftState = "shifted";
             }
+            // else{
+            //     //Debug.Log("STOP");
+            // }
+            
         }
 
 
@@ -69,7 +80,7 @@ public class NonlinearShift : MonoBehaviour
         //     ObjectShift.Rotate(Vector3.forward*-90);
         // }
 
-        if(GameObject.Find("Canvas").GetComponent<CountdownTimer>().trackingStop && d < 0)
+        if(GameObject.Find("Canvas").GetComponent<CountdownTimer>().trackingStop)
         {
             //Debug.Log("123321");
             if(Vector3.Distance(ObjectShift.position, RealHandRight.transform.position) > 0f)

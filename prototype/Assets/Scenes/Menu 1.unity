@@ -4021,9 +4021,9 @@ MonoBehaviour:
     you need to make sure that the blue beam hits the grey dot as well, thereby getting
     a haptic feedback while tracking. In this way, it will remind you not to raise
     the index finger too far away. \r\n\r\nNow you can start the training session
-    by extending your right index finger and putting it on the grey dot. During the
-    task, you need to keep your LEFT hand hanging down vertically. The training session
-    will start after 5 seconds. \r\n\r\nWhen you feel confident about this pursuit
+    by extending your right index finger and putting it on the grey dot. The training
+    session will start after 5 seconds. \rDuring the task, you should keep your LEFT
+    hand hanging down vertically.\n\r\nWhen you feel confident about this pursuit
     tracking task, you can click \u201CNext\u201D button on the upper menu (press
     button \u201CA\u201D on your right controller when the cursor hits the \u201CNext\u201D
     button)  and go to the first trial. \r\n"
@@ -4095,12 +4095,12 @@ MonoBehaviour:
   m_margin: {x: 1.5210539, y: 2.4674773, z: 1.3968275, w: 3.5963}
   m_textInfo:
     textComponent: {fileID: 1094033360}
-    characterCount: 962
+    characterCount: 960
     spriteCount: 0
-    spaceCount: 181
-    wordCount: 175
+    spaceCount: 179
+    wordCount: 174
     linkCount: 0
-    lineCount: 29
+    lineCount: 28
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -4602,9 +4602,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 
   hmd: {fileID: 0}
+  circle: {fileID: 0}
   cursor: {fileID: 0}
-  speedHmd: 0
+  speedCircle: 0
   speedCursor: 0
+  lastPositionCircle: {x: 0, y: 0, z: 0}
+  lastPositionCursor: {x: 0, y: 0, z: 0}
+  hmdPos: {x: 0, y: 0, z: 0}
+  hmdRot: {x: 0, y: 0, z: 0}
+  circlePos: {x: 0, y: 0, z: 0}
+  circleRot: {x: 0, y: 0, z: 0}
+  cursorPos: {x: 0, y: 0, z: 0}
+  cursorRot: {x: 0, y: 0, z: 0}
   logIntervals: 0.5
   loggingMode: 1
 --- !u!114 &1286813845
@@ -4622,6 +4631,7 @@ MonoBehaviour:
   host: vrdc0315.cs.ucl.ac.uk
   port: 8000
   experimentid: ChangeBlindnessHandShift
+  user: 
 --- !u!1 &1295470162
 GameObject:
   m_ObjectHideFlags: 0

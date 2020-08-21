@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Net.Http.Headers;
@@ -16,6 +16,11 @@ public class MeasurementsUploader : MonoBehaviour
     /// The experiment that this build is for. This is not the participant/trial ID - experimentid determines where the log files are written.
     /// </summary>
     public string experimentid;
+
+    /// <summary>
+    /// The folder in which the experimental data will be written.
+    /// </summary>
+    public string user;
 
     public void Send<T>(T serialisable)
     {
@@ -43,10 +48,11 @@ public class MeasurementsUploader : MonoBehaviour
         req.SetRequestHeader("content-type", "application/json");
         req.SetRequestHeader("x-key", "placeholder");
         req.SetRequestHeader("x-id", experimentid);
+        req.SetRequestHeader("x-user", user);
 
         yield return req.SendWebRequest();
 
-        if(req.isNetworkError)
+        if (req.isNetworkError)
         {
             Debug.LogError("Measurements upload failed. Network error " + req.error);
         }
@@ -60,11 +66,11 @@ public class MeasurementsUploader : MonoBehaviour
                 default:
                     Debug.LogError(string.Format("{0} {1} {2} {3}",
                         "Measurements upload failed with server error",
-                        req.responseCode.ToString(), 
+                        req.responseCode.ToString(),
                         req.error,
                         downloadHandler.text));
                     break;
-            }          
+            }
         }
     }
 

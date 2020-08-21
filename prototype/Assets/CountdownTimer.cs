@@ -7,7 +7,7 @@ public class CountdownTimer : MonoBehaviour
 {
     float currentTime = 0f;
     float startingTime = 5f;
-    float timeRemaining = 0f;
+    public float timeRemaining = 0f;
     public float taskTime = 121f;
     // public float loadingTime = 20f;
     public Text countdownText;
@@ -42,6 +42,7 @@ public class CountdownTimer : MonoBehaviour
                 currentTime = 0;
                 GameObject.Find("CountdownText").GetComponent<Text>().enabled = false;
                 trackingStart = true;
+                //Debug.Log("START");
             }
 
             // if(trackingStart)
