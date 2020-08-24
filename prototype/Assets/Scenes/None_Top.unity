@@ -478,9 +478,16 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "1. Locate yourself within comfortable reach in front of the panel\r\n2.
-    Keep your LEFT hand down naturally\r\n3. Start training by touching the grey
-    dot for 5 seconds\r\n4. Try to track the grey dot using RIGHT index finger\r"
+  m_text: '1. Locate yourself within comfortable reach in front of the panel
+
+    2.
+    Keep your LEFT hand down naturally
+
+    3. Start training by touching the grey
+    dot for 5 seconds using RIGHT index finger
+
+    4. Keep close to the grey dot
+    and track it'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -549,12 +556,12 @@ MonoBehaviour:
   m_margin: {x: 1.5210539, y: 2.4674773, z: 0.64343137, w: 3.1853733}
   m_textInfo:
     textComponent: {fileID: 314450306}
-    characterCount: 218
+    characterCount: 230
     spriteCount: 0
-    spaceCount: 39
-    wordCount: 40
+    spaceCount: 42
+    wordCount: 43
     linkCount: 0
-    lineCount: 7
+    lineCount: 6
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
