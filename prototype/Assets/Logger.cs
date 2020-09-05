@@ -275,7 +275,7 @@ public class Logger : MonoBehaviour
         string state = GameObject.Find("RightHandShift").GetComponent<NonlinearShift>().shiftState;
 
         float fingerTargetDistance = Vector3.Distance(circlePos, cursorPos);
-        float fingerCentreDistance = Vector3.Distance(cursorPos, GameObject.Find("Canvas").transform.position);
+        float targetCentreDistance = Vector3.Distance(circlePos, GameObject.Find("Canvas").transform.position);
 
         TelemetryRecord tRecord = new TelemetryRecord();
         tRecord.unixTime = unixTime;
@@ -293,7 +293,7 @@ public class Logger : MonoBehaviour
         tRecord.speedCursor = speedCursor;
 
         tRecord.fingerTargetDistance = fingerTargetDistance;
-        tRecord.fingerCentreDistance = fingerCentreDistance;
+        tRecord.targetCentreDistance = targetCentreDistance;
 
         tRecord.state = state;
 

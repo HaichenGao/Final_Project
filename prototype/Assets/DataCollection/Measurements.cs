@@ -30,7 +30,7 @@ public struct TelemetryRecord
     public string sceneName;
 
     public float fingerTargetDistance;
-    public float fingerCentreDistance;
+    public float targetCentreDistance;
 
     public string state;
 
